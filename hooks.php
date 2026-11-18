@@ -8,10 +8,10 @@ require_once __DIR__ . '/includes/common.inc';
 require_once __DIR__ . '/includes/events.inc';
 use ksfraser\RelatedTo\DTO\RelatedRecordDto;
 define('SS_ksf_FA_CRM_Activity', 200 << 8);
-if (!defined('SA_ACTIVITY_VIEW')) {
-    define('SA_ACTIVITY_VIEW', SS_ksf_FA_CRM_Activity | 1);
-    define('SA_ACTIVITY_MANAGE', SS_ksf_FA_CRM_Activity | 2);
-    define('SA_ACTIVITY_ADMIN', SS_ksf_FA_CRM_Activity | 3);
+if (!defined('SA_CRM_ACTIVITY_VIEW')) {
+    define('SA_CRM_ACTIVITY_VIEW', SS_ksf_FA_CRM_Activity | 1);
+    define('SA_CRM_ACTIVITY_MANAGE', SS_ksf_FA_CRM_Activity | 2);
+    define('SA_CRM_ACTIVITY_ADMIN', SS_ksf_FA_CRM_Activity | 3);
 }
 class hooks_ksf_FA_CRM_Activity extends hooks {
     const RESPONDERS = array('RELATED_TO_FIELDS', 'ACTIVITY_RESOLVE', 'ACTIVITY_FIELDS', 'ACTIVITY_LIST');
@@ -21,9 +21,9 @@ class hooks_ksf_FA_CRM_Activity extends hooks {
     function install_options($app) { }
     function install_access() {
         $security_sections[SS_ksf_FA_CRM_Activity] = _("Activity Automation");
-        $security_areas['SA_ACTIVITY_VIEW'] = array(SA_ACTIVITY_VIEW, _("View activity rules"));
-        $security_areas['SA_ACTIVITY_MANAGE'] = array(SA_ACTIVITY_MANAGE, _("Manage activity rules"));
-        $security_areas['SA_ACTIVITY_ADMIN'] = array(SA_ACTIVITY_ADMIN, _("Administer activity automation"));
+        $security_areas['SA_CRM_ACTIVITY_VIEW'] = array(SA_CRM_ACTIVITY_VIEW, _("View activity rules"));
+        $security_areas['SA_CRM_ACTIVITY_MANAGE'] = array(SA_CRM_ACTIVITY_MANAGE, _("Manage activity rules"));
+        $security_areas['SA_CRM_ACTIVITY_ADMIN'] = array(SA_CRM_ACTIVITY_ADMIN, _("Administer activity automation"));
         return array($security_areas, $security_sections);
     }
     function activate_extension($company, $check_only = true) {
@@ -40,9 +40,9 @@ class hooks_ksf_FA_CRM_Activity extends hooks {
     public function getModuleConstants(&$data, $opts = null) {
         $data['constants'] = array(
             'SS_ksf_FA_CRM_Activity' => SS_ksf_FA_CRM_Activity,
-            'SA_ACTIVITY_VIEW' => SA_ACTIVITY_VIEW,
-            'SA_ACTIVITY_MANAGE' => SA_ACTIVITY_MANAGE,
-            'SA_ACTIVITY_ADMIN' => SA_ACTIVITY_ADMIN,
+            'SA_CRM_ACTIVITY_VIEW' => SA_CRM_ACTIVITY_VIEW,
+            'SA_CRM_ACTIVITY_MANAGE' => SA_CRM_ACTIVITY_MANAGE,
+            'SA_CRM_ACTIVITY_ADMIN' => SA_CRM_ACTIVITY_ADMIN,
         );
         return true;
     }

@@ -8,7 +8,7 @@ $path_to_root = '../..';
 require_once($path_to_root . '/includes/session.inc');
 
 if (!function_exists('page_security')) {
-    define('page_security', 'SA_ACTIVITY_MANAGE');
+    define('page_security', 'SA_CRM_ACTIVITY_MANAGE');
 }
 
 $controller = new ActivityTabController(null, array());
